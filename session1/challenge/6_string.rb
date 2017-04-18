@@ -8,4 +8,11 @@
 # odds_and_evens("abcdefg",false)   # => "aceg"
 
 def odds_and_evens(string, return_odds)
+    final_string = ""
+    i = return_odds ? 1 : 0
+    while i < string.length
+      final_string << string[i]
+      i += 2
+    end
+    final_string
 end

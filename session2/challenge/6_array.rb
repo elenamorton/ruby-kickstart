@@ -14,3 +14,17 @@
 # prime_chars? ['ab', 'cd']       # => false
 # prime_chars? ['a', 'bcd']       # => false
 # prime_chars? ['a', 'b', 'cd']   # => false
+
+def prime_chars?(chars_arr)
+   len = chars_arr.join("").length
+   is_prime = true
+   
+   return if len < 2
+
+   for i in 2..len-1
+        if len % i == 0
+            is_prime = false
+        end
+   end
+   is_prime
+end

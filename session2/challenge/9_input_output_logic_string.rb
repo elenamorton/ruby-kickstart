@@ -25,11 +25,20 @@
 
 def deaf_grandma
 
+  text = gets.chomp!
+  #p text
+  while (text != 'BYE' )
+    #p text
+    if text == text.upcase && text != ""
+        puts 'NO, NOT SINCE 1938!'
+    else
+        puts 'HUH?! SPEAK UP, SONNY!'
+    end
+    text = gets.chomp!
+    
+  end
+  
 end
-
-
-
-
 
 # This will call your code so you can run it from the terminal.
 # But not call it otherwise, so that it will work with our tests.

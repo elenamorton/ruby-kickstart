@@ -8,3 +8,21 @@
 # alternate_words("Lorem ipsum dolor sit amet.")  # => ["Lorem", "dolor", "amet"]
 # alternate_words("Can't we all get along?")      # => ["Can't", "all", "along"]
 # alternate_words("Elementary, my dear Watson!")  # => ["Elementary", "dear"]
+
+
+def alternate_words(str)
+    results = []
+    arr = str.split
+    arr.each do |word|  
+        word.sub!(/[?.,!;()*%&#@=+:<>|_^]/, '')
+    end
+    
+    arr.reject! { |word| word == '' }
+    
+    arr.each_with_index do |word, index| 
+        results << word if index.even?
+    end
+    results
+end
+
+#p alternate_words("Would frowned upon . . . ? I hope not.")

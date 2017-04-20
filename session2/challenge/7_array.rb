@@ -12,14 +12,14 @@
 
 def alternate_words(str)
     results = []
-    arr = str.split
-    arr.each do |word|  
-        word.sub!(/[?.,!;()*%&#@=+:<>|_^]/, '')
+    
+    '[]?.,!;()*%&#@$=+:<>|_^/-\\'.split(//).each do |char|  
+        str = str.gsub(char, ' ')
     end
     
-    arr.reject! { |word| word == '' }
-    
-    arr.each_with_index do |word, index| 
+    #arr = str.split
+   
+    str.split.each_with_index do |word, index| 
         results << word if index.even?
     end
     results

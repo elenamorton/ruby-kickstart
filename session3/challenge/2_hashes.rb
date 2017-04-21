@@ -30,4 +30,4 @@ def staircase(n)
    # p results
 end
 
-p staircase(5)
+#p staircase(5)

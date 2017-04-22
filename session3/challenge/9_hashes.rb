@@ -29,4 +29,31 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
-end
+    my_hash = Hash.new { |this_hash, key| this_hash[key] = Array.new(2) }
+    shared_arr = []
+
+    a.each do |a_elem|
+         
+        if b.include?(a_elem)
+            my_hash[a_elem] = [true, true]
+            shared_arr << a_elem
+        end
+        if !b.include?(a_elem)
+            my_hash[a_elem] = [true, nil]
+        end
+        
+    end
+    
+    b.each do |b_elem|
+        if !my_hash.has_key? b_elem
+            my_hash[b_elem] = [nil, true]
+        end
+    end
+    
+    #p my_hash, shared_arr.sort!
+    return my_hash, shared_arr.sort!
+    end
+
+p shared [1,2,3], [1,2,4]
+p shared [1,2,:c], ['a','b',:c] 
+p shared %w(a b c d), %w(aa b cc d)

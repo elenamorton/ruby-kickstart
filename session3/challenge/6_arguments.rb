@@ -17,3 +17,25 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+def match_maker(*elems)
+    output = []
+    i = 1
+    match = elems.first
+    
+    while i <= elems.length - 2
+     
+        if match
+           output[i / 2] = !(!!elems[i] == !!elems[i + 1])
+        else
+           output[i / 2] = (!!elems[i] == !!elems[i + 1])
+        end
+        i += 2
+
+    end
+    output
+end
+
+#p match_maker true,  true,  true, false, true
+#p match_maker true,  true,  true, 0, nil
+#p match_maker true,  true,  true, false, nil
+#p match_maker true,  true,  true, true, nil

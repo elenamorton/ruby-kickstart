@@ -18,7 +18,7 @@
 #
 # array_init(2) { |i| i.to_s }    # => ['0', '1']
 # array_init { |i| i.to_s }       # => ['0', '1', '2', '3', '4']
-# array_init 2                    # => ['0', '100']
+# c                    # => ['0', '100']
 # array_init                      # => ['0', '100', '200', '300', '400']
 # array_init { 'hi }              # => ['hi', 'hi', 'hi', 'hi', 'hi']
 # array_init 10 do |i|            # => [0, -5, 400, -15, 800, -25, 1200, -35, 1600, -45]
@@ -30,5 +30,14 @@
 # end
 
 
-def array_init
+def array_init(num=5, &block)
+    block ||= Proc.new { |i| (100 * i).to_s }
+    #p block
+    Array.new(num, &block)
+
 end
+
+p array_init
+p array_init 3
+p array_init { 'hi' }
+p array_init(3) { |i| i.to_s }

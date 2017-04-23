@@ -29,5 +29,26 @@
 # create it from scratch :)
 
 
-def pathify
+def pathify(hash_paths = Hash.new)
+    output = []
+    p hash_paths
+    
+    return hash_paths.map { |path| "/" + path}  if hash_paths.is_a? Array
+
+
+    # recursive 
+    hash_paths.each do |top_paths, inner_dirs|
+        top_paths = "/" + top_paths
+        p top_paths, inner_dirs
+        inner_paths = pathify inner_dirs
+        
+        inner_paths.each do |inner_path|
+            output << (top_paths + inner_path)
+        end 
+    end
+    output
 end
+
+#p pathify 'usr' => {'bin' => ['ruby', 'perl'] }
+#p pathify 'usr' => {'bin' => ['ruby'], 'include' => ['zlib.h'] }
+p pathify 'usr' => {'bin' => ['ruby']}, 'opt' => {'local' => {'bin' => ['sqlite3', 'rsync']} }

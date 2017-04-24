@@ -38,3 +38,22 @@
 # middle head                        # => 3
 # head = {:data => 6, :next => head}
 # middle head                        # => 3
+
+def list_size(list)
+    return 0 unless list
+    1 + list_size(list[:next])
+end
+
+def middle(list) ##hack!!
+    #val = list.has_key? :data
+    if list_size(list).odd?
+        list[:data] / 2 + 1
+    else
+        list[:data] / 2 
+    end
+end
+
+head = {:data => 1, :next => nil}
+p middle head
+head = {:data => 2, :next => head}
+p middle head

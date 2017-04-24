@@ -15,3 +15,22 @@
 # head = {:data => 6, :next => head}
 # print_list head                    # >> "6\n5\n4\n3\n2\n1\n"
 
+def list_size(list)
+    return 0 unless list
+    1 + list_size(list[:next])
+end
+
+def print_list(list)
+    #output = []
+    while list
+        puts list[:data]
+        list = list[:next]
+    end
+
+    #puts output
+end
+
+head = {:data => 1, :next => nil}
+print_list head
+head = {:data => 2, :next => head}
+print_list head
